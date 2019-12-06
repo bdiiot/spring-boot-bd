@@ -1,5 +1,3 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -10,7 +8,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>mydemo</title>
+<title>crud-demo</title>
 <head>
 <%@ include file="head.jsp" %>
 <style>
@@ -33,13 +31,11 @@ tr:nth-child(even) {
 </head>
 <body>
 <header>
-<%@ include file="header.jsp" %>
 </header>
 <div class="container">
 <h1>crud demo</h1>
 <a href="${contextPath}/newUser"><h3>New User</h3></a><br/>
 <h2>User Details</h2>
-<%-- <label>${date}</label> --%>
 <table>
   <thead>
     <th>ID</th>

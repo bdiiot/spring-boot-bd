@@ -18,7 +18,7 @@
         <java.version>1.8</java.version>
         <hdp.version>2.6.5.0-292</hdp.version>
         <hadoop.version>2.7.3</hadoop.version>
-        <hive.version>1.2.1000</hive.version>
+        <hive.version>2.3.4</hive.version>
         <phoenix.version>4.7.0</phoenix.version>
     </properties>
 
@@ -46,7 +46,7 @@
         <dependency>
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-jdbc</artifactId>
-            <version>${hive.version}.${hdp.version}</version>
+            <version>${hive.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>

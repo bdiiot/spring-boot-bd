@@ -8,7 +8,7 @@ import java.sql.*;
 
 import static com.bdiiot.spring.boot.bd.utils.Constant.*;
 
-public class HiveLlap {
+public class PhoenixJdbc {
     private static Connection connection = null;
     private static Statement statement = null;
 
@@ -23,11 +23,11 @@ public class HiveLlap {
         UserGroupInformation.setConfiguration(configuration);
         UserGroupInformation.loginUserFromKeytab(kerberosUser, kerberosTab);
 
-        Class.forName(hiveDriverName);
-        connection = DriverManager.getConnection(llapJdbcUrl);
+        Class.forName(phoenixDriverName);
+        connection = DriverManager.getConnection(phoenixJdbcUrl);
         statement = connection.createStatement();
 
-        ResultSet resultSet = statement.executeQuery("show databases");
+        ResultSet resultSet = statement.executeQuery("select * from test.test_hbase");
 
         while (resultSet.next()) {
             System.out.println(resultSet.getString(1));

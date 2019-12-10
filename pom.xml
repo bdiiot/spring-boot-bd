@@ -19,9 +19,29 @@
         <hdp.version>2.6.5.0-292</hdp.version>
         <hadoop.version>2.7.3</hadoop.version>
         <hive.version>1.2.1000</hive.version>
+        <phoenix.version>4.7.0</phoenix.version>
     </properties>
 
     <dependencies>
+        <!-- phoenix -->
+        <!-- add hbase-site.xml -->
+        <dependency>
+            <groupId>sqlline</groupId>
+            <artifactId>sqlline</artifactId>
+            <version>1.1.9</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.phoenix</groupId>
+            <artifactId>phoenix-core</artifactId>
+            <version>${phoenix.version}.${hdp.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <!-- hive jdbc -->
         <dependency>
             <groupId>org.apache.hive</groupId>

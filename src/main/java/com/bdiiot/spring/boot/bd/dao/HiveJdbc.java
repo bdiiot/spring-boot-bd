@@ -9,8 +9,8 @@ import java.sql.*;
 import static com.bdiiot.spring.boot.bd.utils.Constant.*;
 
 public class HiveJdbc {
-    private static Connection conn = null;
-    private static Statement stmt = null;
+    private static Connection connection = null;
+    private static Statement statement = null;
 
     public static void main(String[] args) throws SQLException, IOException, ClassNotFoundException {
         // java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
@@ -24,13 +24,17 @@ public class HiveJdbc {
         UserGroupInformation.loginUserFromKeytab(kerberosUser, kerberosTab);
 
         Class.forName(hiveDriverName);
-        conn = DriverManager.getConnection(hiveJdbcUrl);
-        stmt = conn.createStatement();
+        connection = DriverManager.getConnection(hiveJdbcUrl);
+        statement = connection.createStatement();
 
-        ResultSet set = stmt.executeQuery("show databases");
+        ResultSet resultSet = statement.executeQuery("show databases");
 
-        while (set.next()) {
-            System.out.println(set.getString(1));
+        while (resultSet.next()) {
+            System.out.println(resultSet.getString(1));
         }
+
+        resultSet.close();
+        statement.close();
+        connection.close();
     }
 }

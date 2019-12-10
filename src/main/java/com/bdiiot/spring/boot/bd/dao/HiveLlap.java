@@ -8,11 +8,15 @@ import java.sql.*;
 
 import static com.bdiiot.spring.boot.bd.utils.Constant.*;
 
-public class HiveMain {
+public class HiveLlap {
     private static Connection conn = null;
     private static Statement stmt = null;
 
     public static void main(String[] args) throws SQLException, IOException, ClassNotFoundException {
+        // java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+        System.setProperty("HADOOP_HOME", "/tmp");
+        System.setProperty("hadoop.home.dir", "/tmp");
+
         Configuration configuration = new Configuration();
         configuration.set("hadoop.security.authentication", "Kerberos");
 

@@ -16,6 +16,11 @@ public class HiveJdbc {
         // java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
         System.setProperty("HADOOP_HOME", "/tmp");
         System.setProperty("hadoop.home.dir", "/tmp");
+        // without krb5.conf
+        System.setProperty("java.security.krb5.realm", kerberosRealm);
+        System.setProperty("java.security.krb5.kdc", kerberosKDC);
+
+        String sql = "show databases";
 
         Configuration configuration = new Configuration();
         configuration.set("hadoop.security.authentication", "Kerberos");
@@ -27,7 +32,7 @@ public class HiveJdbc {
         connection = DriverManager.getConnection(hiveJdbcUrl);
         statement = connection.createStatement();
 
-        ResultSet resultSet = statement.executeQuery("show databases");
+        ResultSet resultSet = statement.executeQuery(sql);
 
         while (resultSet.next()) {
             System.out.println(resultSet.getString(1));
